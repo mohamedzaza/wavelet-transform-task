@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# ==========================================
+
 # 1. PROJECT SETTINGS
-# ==========================================
+
 
 IMAGE_PATH = "images/original.jpg"
 RESULTS_FOLDER = "results"
@@ -18,9 +18,9 @@ print("IMAGE PROCESSING PROJECT")
 print("=" * 50)
 
 
-# ==========================================
+
 # 2. LOAD ORIGINAL IMAGE
-# ==========================================
+
 
 image = cv2.imread(IMAGE_PATH)
 
@@ -42,9 +42,8 @@ print("Height:", height)
 print("Channels:", image.shape[2])
 
 
-# ==========================================
+
 # 3. ADD SALT AND PEPPER NOISE
-# ==========================================
 
 def add_salt_pepper_noise(image, amount=0.05):
 
@@ -83,9 +82,9 @@ noisy_image = add_salt_pepper_noise(image_rgb)
 print("\nSalt and Pepper Noise Added Successfully!")
 
 
-# ==========================================
+
 # 4. APPLY SMOOTHING FILTERS
-# ==========================================
+
 
 # Average Filter
 average_filter = cv2.blur(noisy_image, (5, 5))
@@ -105,9 +104,9 @@ print("Median Filter Applied!")
 print("Gaussian Filter Applied!")
 
 
-# ==========================================
+
 # 5. FOURIER TRANSFORM
-# ==========================================
+
 
 # Apply 2D Fourier Transform
 f_transform = np.fft.fft2(gray_image)
@@ -132,9 +131,9 @@ fourier_display = cv2.normalize(
 print("Fourier Transform Applied Successfully!")
 
 
-# ==========================================
+
 # 6. IMAGE SEGMENTATION - OTSU
-# ==========================================
+
 
 threshold_value, segmented_image = cv2.threshold(
     gray_image,
@@ -147,9 +146,9 @@ print("Otsu Threshold Value:", threshold_value)
 print("Image Segmentation Completed!")
 
 
-# ==========================================
+
 # 7. SAVE INDIVIDUAL RESULTS
-# ==========================================
+
 
 # Convert RGB results to BGR before saving with OpenCV
 cv2.imwrite(
@@ -190,9 +189,9 @@ cv2.imwrite(
 print("\nAll Individual Results Saved!")
 
 
-# ==========================================
+
 # 8. DISPLAY ALL RESULTS IN ONE SUBPLOT
-# ==========================================
+
 
 plt.figure(figsize=(16, 14))
 
@@ -239,9 +238,9 @@ print("Final Subplot Saved Successfully!")
 plt.show()
 
 
-# ==========================================
+
 # 9. PROJECT SUMMARY
-# ==========================================
+
 
 print("\n" + "=" * 50)
 print("PROJECT COMPLETED SUCCESSFULLY!")
